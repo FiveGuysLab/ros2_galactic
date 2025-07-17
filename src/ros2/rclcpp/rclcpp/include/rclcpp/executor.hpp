@@ -26,6 +26,7 @@
 #include <mutex>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "rcl/guard_condition.h"
 #include "rcl/wait.h"
@@ -575,6 +576,10 @@ protected:
 
   /// shutdown callback handle registered to Context
   rclcpp::OnShutdownCallbackHandle shutdown_callback_handle_;
+
+  /// Timing results for performance monitoring
+  static constexpr size_t MAX_TIMING_RESULTS = 1000;
+  std::vector<long> timing_results;
 };
 
 }  // namespace rclcpp
